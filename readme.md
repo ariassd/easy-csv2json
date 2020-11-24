@@ -53,9 +53,8 @@ Thank you for using this NPM
 
 ## License
 
-This font is free for personal and commercial use. You are free to copy and transmit this typeface.
+This software is licensed under [MIT License](LICENSE)
 
-This typeface is licensed under [MIT License](LICENSE)\
 ![](assets/MIT.png) ![](assets/open-source.png)
 
 November 2020
