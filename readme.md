@@ -45,12 +45,7 @@ fs.readFile(filePath, null, (err: any, nb: any) => {
 ## Status
 
 Project is: _in progress_
-Thank you for using this font
-
-## TODO
-
-- Add more symbols
-- Build a Spanish ordered version
+Thank you for using this NPM
 
 ## Stay in touch
 
