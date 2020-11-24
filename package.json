@@ -1,0 +1,26 @@
+{
+  "name": "easy-csv",
+  "version": "1.0.0",
+  "description": "Easiest way to convert CSV files to JSON",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf lib",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "npm run build",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "types"
+  ],
+  "author": "Luis Arias <ariassd@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "njscommon": "npm:@nestjs/common@^7.3.2",
+    "rxjs": "^6.6.0",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {}
+}
