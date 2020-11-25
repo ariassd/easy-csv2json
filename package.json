@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "njscommon": "npm:@nestjs/common@^7.3.2",
+    "prettier": "^2.2.0",
     "rxjs": "^6.6.0",
     "typescript": "^3.9.5"
   },
