@@ -1,3 +1,3 @@
-export * from './easy-csv-input';
-export * from './easy-csv';
+export * from './easy-csv-2-json-input';
+export * from './easy-csv-2-json';
 export * from './metadata-type';

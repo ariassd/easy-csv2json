@@ -1,22 +1,20 @@
 import { MetadataType } from './metadata-type';
-import { EasyCSVInput } from './easy-csv-input';
-export class EasyCSV {
+import { EasyCSV2JSONInput } from './easy-csv-2-json-input';
+export class EasyCSV2JSON {
   /**
    * Transform an CSV file to JSON object
    *
    * @static
    * @param {*} $input
    * @returns {Promise<any>}
-   * @memberof EasyCSV
+   * @memberof EasyCSV2JSON
    */
-  static async convert($input: EasyCSVInput): Promise<any> {
+  static async convert($input: EasyCSV2JSONInput): Promise<any> {
     const enc = new TextDecoder('utf-8');
     const arr = new Uint8Array($input.file);
     const csvContent = enc.decode(arr);
     const table = [];
     const excelColumns = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-    // console.log(excelColumns, excelColumns.length);
-
     if (csvContent) {
       const lines = csvContent.split(`\n`);
       let headers: string[] = [];

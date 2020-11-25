@@ -1,5 +1,5 @@
 {
-  "name": "easy-csv",
+  "name": "easy-csv2json",
   "version": "1.0.0",
   "description": "Easiest way to convert CSV files to JSON",
   "main": "lib/index.js",
@@ -12,16 +12,24 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ariassd/easy-csv-npm.git"
+  },
   "keywords": [
-    "types"
+    "csv", "json", "file"
   ],
   "author": "Luis Arias <ariassd@gmail.com>",
   "license": "MIT",
-  "dependencies": {
+  "homepage": "https://github.com/ariassd/easy-csv-npm",
+  "devDependencies": {
     "njscommon": "npm:@nestjs/common@^7.3.2",
     "prettier": "^2.2.0",
     "rxjs": "^6.6.3",
     "typescript": "^3.9.7"
   },
-  "devDependencies": {}
+  "dependencies": {},
+  "files": [
+    "lib/**/*"
+  ]
 }
