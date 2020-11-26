@@ -9,7 +9,7 @@ This NPM provides a way to convert from simple CSV file to JSON and give you som
 ## How to install.
 
 ```bash
-npm install easy-csv
+npm i easy-csv2json
 ```
 
 ### Simple use
