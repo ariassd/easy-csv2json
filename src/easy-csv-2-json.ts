@@ -14,7 +14,6 @@ export class EasyCSV2JSON {
     const arr = new Uint8Array($input.file);
     const csvContent = enc.decode(arr);
     const table = [];
-    const excelColumns = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     if (csvContent) {
       const lines = csvContent.split(`\n`);
       let headers: string[] = [];
@@ -28,17 +27,11 @@ export class EasyCSV2JSON {
             for (const cell in headers) {
               if (headers[cell]) {
                 const metaValue: any = await this.inferType(columns[cell]);
-                let currentColumnLetter = +cell;
-                let currentColumnNumber = 1;
                 let repeatedHeader = '';
-                if (+cell >= excelColumns.length) {
-                  currentColumnNumber++;
-                  currentColumnLetter = +cell - excelColumns.length;
-                }
-                const currentColumn = `${excelColumns[currentColumnLetter]}${currentColumnNumber}`;
-
                 // tslint:disable-next-line: no-string-literal
-                metaValue['column'] = currentColumn;
+                metaValue['column'] = await EasyCSV2JSON.getColum(+cell);
+                // tslint:disable-next-line: no-string-literal
+                metaValue['row'] = row;
                 if ($new[headers[cell]]) {
                   repeatedHeader =
                     Object.keys($new).filter((i) => i === headers[cell])
@@ -57,15 +50,10 @@ export class EasyCSV2JSON {
           for (const cell in columns) {
             if (columns[cell]) {
               const metaValue: any = await this.inferType(columns[cell]);
-              let currentColumnLetter = +cell;
-              let currentColumnNumber = 1;
-              if (+cell >= excelColumns.length) {
-                currentColumnNumber++;
-                currentColumnLetter = +cell - excelColumns.length;
-              }
-              const currentColumn = `${excelColumns[currentColumnLetter]}${currentColumnNumber}`;
               // tslint:disable-next-line: no-string-literal
-              metaValue['column'] = currentColumn;
+              metaValue['column'] = await EasyCSV2JSON.getColum(+cell);
+              // tslint:disable-next-line: no-string-literal
+              metaValue['row'] = +row + 1;
               table[row].push($input.metadata ? metaValue : metaValue.value);
             }
           }
@@ -73,6 +61,17 @@ export class EasyCSV2JSON {
       }
     }
     return table;
+  }
+
+  private static async getColum(colNumber: number): Promise<string> {
+    const columns = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    let spin = 0;
+    if (colNumber >= columns.length)
+      spin = Math.floor(colNumber / columns.length);
+    let result = `${columns[colNumber - columns.length * spin]}${
+      spin > 0 ? await EasyCSV2JSON.getColum(spin - 1) : ''
+    }`;
+    return result;
   }
 
   static async inferType(value: string): Promise<MetadataType> {
