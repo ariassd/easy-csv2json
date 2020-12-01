@@ -1,6 +1,6 @@
 {
   "name": "easy-csv2json",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easiest way to convert CSV files to JSON",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
