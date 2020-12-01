@@ -77,58 +77,63 @@ _data_
 ```json
 [
   [
-    { "value": "id", "type": "string", "column": "A1" },
-    { "value": "name", "type": "string", "column": "B1" },
-    { "value": "price", "type": "string", "column": "C1" },
-    { "value": "stock", "type": "string", "column": "D1" }
+    { "value": "id", "type": "string", "column": "A", "row": 1 },
+    { "value": "name", "type": "string", "column": "B", "row": 1 },
+    { "value": "price", "type": "string", "column": "C", "row": 1 },
+    { "value": "stock", "type": "string", "column": "D", "row": 1 }
   ],
   [
-    { "value": 0, "type": "number", "column": "A1" },
-    { "value": "YAM 1000g", "type": "string", "column": "B1" },
-    { "value": 1.22, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 0, "type": "number", "column": "A", "row": 2 },
+    { "value": "YAM 1000g", "type": "string", "column": "B", "row": 2 },
+    { "value": 1.22, "type": "number", "column": "C", "row": 2 },
+    { "value": 1, "type": "number", "column": "D", "row": 2 }
   ],
   [
-    { "value": 2, "type": "number", "column": "A1" },
-    { "value": "GARLIC MESH 500g", "type": "string", "column": "B1" },
-    { "value": 0.97, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 2, "type": "number", "column": "A", "row": 3 },
+    { "value": "GARLIC MESH 500g", "type": "string", "column": "B", "row": 3 },
+    { "value": 0.97, "type": "number", "column": "C", "row": 3 },
+    { "value": 1, "type": "number", "column": "D", "row": 3 }
   ],
   [
-    { "value": 3, "type": "number", "column": "A1" },
-    { "value": "BROCOLI 1000 g", "type": "string", "column": "B1" },
-    { "value": 1.64, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 3, "type": "number", "column": "A", "row": 4 },
+    { "value": "BROCOLI 1000 g", "type": "string", "column": "B", "row": 4 },
+    { "value": 1.64, "type": "number", "column": "C", "row": 4 },
+    { "value": 1, "type": "number", "column": "D", "row": 4 }
   ],
   [
-    { "value": 4, "type": "number", "column": "A1" },
-    { "value": "SWEET POTATO 1000g", "type": "string", "column": "B1" },
-    { "value": 1.47, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 4, "type": "number", "column": "A", "row": 5 },
+    {
+      "value": "SWEET POTATO 1000g",
+      "type": "string",
+      "column": "B",
+      "row": 5
+    },
+    { "value": 1.47, "type": "number", "column": "C", "row": 5 },
+    { "value": 1, "type": "number", "column": "D", "row": 5 }
   ],
   [
-    { "value": 5, "type": "number", "column": "A1" },
-    { "value": "WHITE ONION 1000g", "type": "string", "column": "B1" },
-    { "value": 1.16, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 5, "type": "number", "column": "A", "row": 6 },
+    { "value": "WHITE ONION 1000g", "type": "string", "column": "B", "row": 6 },
+    { "value": 1.16, "type": "number", "column": "C", "row": 6 },
+    { "value": 1, "type": "number", "column": "D", "row": 6 }
   ],
   [
-    { "value": 6, "type": "number", "column": "A1" },
-    { "value": "RED ONION 1000g", "type": "string", "column": "B1" },
-    { "value": 3.01, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 6, "type": "number", "column": "A", "row": 7 },
+    { "value": "RED ONION 1000g", "type": "string", "column": "B", "row": 7 },
+    { "value": 3.01, "type": "number", "column": "C", "row": 7 },
+    { "value": 1, "type": "number", "column": "D", "row": 7 }
   ],
   [
-    { "value": 7, "type": "number", "column": "A1" },
-    { "value": "GINGER 1000g", "type": "string", "column": "B1" },
-    { "value": 3.81, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 7, "type": "number", "column": "A", "row": 8 },
+    { "value": "GINGER 1000g", "type": "string", "column": "B", "row": 8 },
+    { "value": 3.81, "type": "number", "column": "C", "row": 8 },
+    { "value": 1, "type": "number", "column": "D", "row": 8 }
   ],
   [
-    { "value": 8, "type": "number", "column": "A1" },
-    { "value": "CUCUMBER 1000 g", "type": "string", "column": "B1" },
-    { "value": 0.49, "type": "number", "column": "C1" },
-    { "value": 1, "type": "number", "column": "D1" }
+    { "value": 8, "type": "number", "column": "A", "row": 9 },
+    { "value": "CUCUMBER 1000 g", "type": "string", "column": "B", "row": 9 },
+    { "value": 0.49, "type": "number", "column": "C", "row": 9 },
+    { "value": 1, "type": "number", "column": "D", "row": 9 }
   ]
 ]
 ```
@@ -151,52 +156,92 @@ _data_
 ```json
 [
   {
-    "id": { "value": 0, "type": "number", "column": "A1" },
-    "name": { "value": "YAM 1000g", "type": "string", "column": "B1" },
-    "price": { "value": 1.22, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 0, "type": "number", "column": "A", "row": "1" },
+    "name": {
+      "value": "YAM 1000g",
+      "type": "string",
+      "column": "B",
+      "row": "1"
+    },
+    "price": { "value": 1.22, "type": "number", "column": "C", "row": "1" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "1" }
   },
   {
-    "id": { "value": 2, "type": "number", "column": "A1" },
-    "name": { "value": "GARLIC MESH 500g", "type": "string", "column": "B1" },
-    "price": { "value": 0.97, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 2, "type": "number", "column": "A", "row": "2" },
+    "name": {
+      "value": "GARLIC MESH 500g",
+      "type": "string",
+      "column": "B",
+      "row": "2"
+    },
+    "price": { "value": 0.97, "type": "number", "column": "C", "row": "2" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "2" }
   },
   {
-    "id": { "value": 3, "type": "number", "column": "A1" },
-    "name": { "value": "BROCOLI 1000 g", "type": "string", "column": "B1" },
-    "price": { "value": 1.64, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 3, "type": "number", "column": "A", "row": "3" },
+    "name": {
+      "value": "BROCOLI 1000 g",
+      "type": "string",
+      "column": "B",
+      "row": "3"
+    },
+    "price": { "value": 1.64, "type": "number", "column": "C", "row": "3" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "3" }
   },
   {
-    "id": { "value": 4, "type": "number", "column": "A1" },
-    "name": { "value": "SWEET POTATO 1000g", "type": "string", "column": "B1" },
-    "price": { "value": 1.47, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 4, "type": "number", "column": "A", "row": "4" },
+    "name": {
+      "value": "SWEET POTATO 1000g",
+      "type": "string",
+      "column": "B",
+      "row": "4"
+    },
+    "price": { "value": 1.47, "type": "number", "column": "C", "row": "4" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "4" }
   },
   {
-    "id": { "value": 5, "type": "number", "column": "A1" },
-    "name": { "value": "WHITE ONION 1000g", "type": "string", "column": "B1" },
-    "price": { "value": 1.16, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 5, "type": "number", "column": "A", "row": "5" },
+    "name": {
+      "value": "WHITE ONION 1000g",
+      "type": "string",
+      "column": "B",
+      "row": "5"
+    },
+    "price": { "value": 1.16, "type": "number", "column": "C", "row": "5" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "5" }
   },
   {
-    "id": { "value": 6, "type": "number", "column": "A1" },
-    "name": { "value": "RED ONION 1000g", "type": "string", "column": "B1" },
-    "price": { "value": 3.01, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 6, "type": "number", "column": "A", "row": "6" },
+    "name": {
+      "value": "RED ONION 1000g",
+      "type": "string",
+      "column": "B",
+      "row": "6"
+    },
+    "price": { "value": 3.01, "type": "number", "column": "C", "row": "6" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "6" }
   },
   {
-    "id": { "value": 7, "type": "number", "column": "A1" },
-    "name": { "value": "GINGER 1000g", "type": "string", "column": "B1" },
-    "price": { "value": 3.81, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 7, "type": "number", "column": "A", "row": "7" },
+    "name": {
+      "value": "GINGER 1000g",
+      "type": "string",
+      "column": "B",
+      "row": "7"
+    },
+    "price": { "value": 3.81, "type": "number", "column": "C", "row": "7" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "7" }
   },
   {
-    "id": { "value": 8, "type": "number", "column": "A1" },
-    "name": { "value": "CUCUMBER 1000 g", "type": "string", "column": "B1" },
-    "price": { "value": 0.49, "type": "number", "column": "C1" },
-    "stock": { "value": 1, "type": "number", "column": "D1" }
+    "id": { "value": 8, "type": "number", "column": "A", "row": "8" },
+    "name": {
+      "value": "CUCUMBER 1000 g",
+      "type": "string",
+      "column": "B",
+      "row": "8"
+    },
+    "price": { "value": 0.49, "type": "number", "column": "C", "row": "8" },
+    "stock": { "value": 1, "type": "number", "column": "D", "row": "8" }
   }
 ]
 ```
