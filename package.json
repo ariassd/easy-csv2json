@@ -10,7 +10,9 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "prepare": "npm run build",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "changelog": "auto-changelog --template changelog-template.hbs -p -u --commit-limit false",
+    "changelog-debug": "auto-changelog --template changelog-template.hbs -p --template json --output changelog-data.json"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   "license": "MIT",
   "homepage": "https://github.com/ariassd/easy-csv2json",
   "devDependencies": {
+    "auto-changelog": "^2.2.1",
     "njscommon": "npm:@nestjs/common@^7.3.2",
     "prettier": "^2.2.0",
     "rxjs": "^6.6.3",
