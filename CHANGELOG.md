@@ -1,10 +1,22 @@
+# v1.1.0
+
+[2020-12-04]
+
+### Features
+
+- feat: General improvements in the main process
+- feat: New methods to access data now you can get a value or modify it.
+- feat: Functions are here!, now you can apply functions to modify data and process.
+
+Thank you for using Easy-csv2json
+
 # v1.0.3
 
 [2020-12-01]
 
 ### Fixes
 
-- fix: Column generation improvements, and new metadata field (row number) ([`3d0a8be`](https://github.com/ariassd/easy-csv-npm/commit/3d0a8be2551af90d70a814c3628928d9b0c51e02))
+- fix: Column generation improvements, and new metadata field (row number)
 
 # v1.0.2
 

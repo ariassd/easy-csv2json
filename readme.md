@@ -8,11 +8,15 @@ This NPM provides a way to convert from simple CSV file to JSON and give you som
 
 ## How to install.
 
+[see npmjs package](https://www.npmjs.com/package/easy-csv2json)
+
 ```bash
 npm i easy-csv2json
 ```
 
-### Simple use
+### Simple use of static method
+
+**EasyCSV2JSON.convert**
 
 ```typescript
 import { EasyCSV2JSON, EasyCSV2JSONInput } from 'easy-csv2json/lib';
@@ -49,7 +53,7 @@ _Result json_
 ]
 ```
 
-### More samples here
+### More output samples here
 
 [📤 Go to samples](./docs/samples.md)
 
@@ -62,22 +66,40 @@ _Result json_
 | headers   | boolean     | The file contains headers true / false |
 | metadata  | boolean     | Show metadata in the output JSON       |
 
+> **⚠️ IMPORTANT!**
+>
+> When you use headers, if a header name is repeated the second one is renamed using a numeric postfix.
+> Eg: if there are two columns called price the second one becomes into price1
+
 ### Metadata provided.
 
-| Meta   | value                                     |
-| ------ | ----------------------------------------- |
-| value  | Typed value of the cell                   |
-| type   | Type of the value, string, number or date |
-| column | Excel styled columns, eg: A1, B1, C1      |
+| Meta   | Type                   | value                                     |
+| ------ | ---------------------- | ----------------------------------------- |
+| value  | string, number or date | Typed value of the cell                   |
+| type   | string                 | Type of the value, string, number or date |
+| column | string                 | Excel styled columns, eg: A, B, C         |
+| row    | number                 | Reference to the number of row, eg: 1,2,3 |
+
+## Methods
+
+EasyCSV2JSON used as a instanced class provide the following methods.
+
+```typescript
+const eCsv = new EasyCSV2JSON();
+await eCsv.init(options):
+```
+
+[See methods here](docs/methods.md)
 
 ## Status
 
-Project is: _in progress_
+Project: _in progress_
 Thank you for using this NPM
 
 ## Stay in touch
 
-- Author - Luis Arias 2020 <ariassd@gmail.com> - [GitHub profile](https://github.com/ariassd)
+- Author - Luis Arias 2020 <ariassd@gmail.com>
+  [GitHub profile](https://github.com/ariassd)
 
 ## License
 

@@ -1,6 +1,12 @@
-import { MetadataType } from './metadata-type';
+import { OutOfRangeException } from '.';
+import { Cell } from './cell';
 import { EasyCSV2JSONInput } from './easy-csv-2-json-input';
+import { Row } from './row';
 export class EasyCSV2JSON {
+  private $table: [Array<Cell>] = [[]];
+  private $options: EasyCSV2JSONInput;
+  constructor() {}
+
   /**
    * Transform an CSV file to JSON object
    *
@@ -10,57 +16,111 @@ export class EasyCSV2JSON {
    * @memberof EasyCSV2JSON
    */
   static async convert($input: EasyCSV2JSONInput): Promise<any> {
+    const eSCV = new EasyCSV2JSON();
+    await eSCV.init($input);
+    return eSCV.convert();
+  }
+
+  /**
+   * Transform an CSV file to JSON object with metadata
+   *
+   * @param {EasyCSV2JSONInput} $input Input parameters containing the array buffer, charSep and headers indicator
+   * @returns {Promise<[Array<Cell>]>} A table containing the data
+   * @memberof EasyCSV2JSON
+   */
+  public async init($input: EasyCSV2JSONInput) {
+    this.$options = $input;
+    this.$table = [[]];
     const enc = new TextDecoder('utf-8');
     const arr = new Uint8Array($input.file);
     const csvContent = enc.decode(arr);
-    const table = [];
+
     if (csvContent) {
       const lines = csvContent.split(`\n`);
       let headers: string[] = [];
+      let rowNumber: number = 0;
       for (const row in lines) {
-        if ($input?.headers) {
-          if (row === '0') {
-            headers = lines[row].split($input.charSep);
-          } else {
-            const columns = lines[row].split($input.charSep);
-            const $new: any = {};
-            for (const cell in headers) {
-              if (headers[cell]) {
-                const metaValue: any = await this.inferType(columns[cell]);
-                let repeatedHeader = '';
-                // tslint:disable-next-line: no-string-literal
-                metaValue['column'] = await EasyCSV2JSON.getColum(+cell);
-                // tslint:disable-next-line: no-string-literal
-                metaValue['row'] = row;
-                if ($new[headers[cell]]) {
-                  repeatedHeader =
-                    Object.keys($new).filter((i) => i === headers[cell])
-                      .length + '';
-                }
-                $new[`${headers[+cell]}${repeatedHeader}`] = $input.metadata
-                  ? metaValue
-                  : metaValue.value;
-              }
-            }
-            table.push($new);
+        if ($input?.headers && row === '0') {
+          headers = lines[row].split($input.charSep);
+          // check repeated headers
+          let headersTemp = [];
+          for (const index in headers) {
+            const count = headersTemp.filter((i) => i === headers[index])
+              .length;
+            headersTemp.push(headers[index]);
+            headers[index] += count > 0 ? count : '';
           }
         } else {
-          table[row] = [];
+          this.$table[rowNumber] = new Array();
           const columns = lines[row].split($input.charSep);
           for (const cell in columns) {
             if (columns[cell]) {
-              const metaValue: any = await this.inferType(columns[cell]);
-              // tslint:disable-next-line: no-string-literal
-              metaValue['column'] = await EasyCSV2JSON.getColum(+cell);
-              // tslint:disable-next-line: no-string-literal
-              metaValue['row'] = +row + 1;
-              table[row].push($input.metadata ? metaValue : metaValue.value);
+              const newCell: Cell = await EasyCSV2JSON.inferType(columns[cell]);
+              newCell.headerName = headers[cell];
+              newCell.column = await EasyCSV2JSON.getColum(+cell);
+              newCell.row = rowNumber + 1;
+              this.$table[rowNumber].push(newCell);
             }
           }
+          rowNumber++;
         }
       }
     }
-    return table;
+  }
+
+  public async convert(): Promise<any> {
+    let result: any = [];
+    for (const row in this.$table) {
+      result[row] = this.$options?.headers ? {} : [];
+      for (const cell in this.$table[row]) {
+        const { headerName, ...currentCell } = this.$table[row][cell];
+        if (this.$options?.headers) {
+          result[row][headerName] = this.$options.metadata
+            ? currentCell
+            : currentCell.value;
+        } else {
+          result[row].push(
+            this.$options.metadata ? currentCell : currentCell.value,
+          );
+        }
+      }
+    }
+    return result;
+  }
+
+  public async getTable(): Promise<[Array<Cell>]> {
+    return this.$table;
+  }
+
+  public async val(cell: string): Promise<any> {
+    return (await this.cell(cell))?.value;
+  }
+
+  public async setVal(cell: string, value: any) {
+    var column = cell.slice(0, cell.search(/\d/))?.toUpperCase();
+    var row = cell?.toUpperCase().replace(column, '');
+    let result = this.$table[+row - 1]?.find((i) => i.column === column);
+    if (!result) throw new OutOfRangeException(`Out of range '${cell}'`);
+    result.value = value;
+    return result;
+  }
+
+  public async cell(cell: string): Promise<Cell> {
+    var column = cell.slice(0, cell.search(/\d/))?.toUpperCase();
+    var row = cell?.toUpperCase().replace(column, '');
+    const result = this.$table[+row - 1]?.find((i) => i.column === column);
+    if (!result) throw new OutOfRangeException(`Out of range '${cell}'`);
+    return result;
+  }
+
+  public async applyFormula(
+    cell: string,
+    fn: (value: any, $this: EasyCSV2JSON) => Promise<any>,
+  ): Promise<Cell> {
+    const cellObject = (await this.cell(cell)).value;
+    const newValue = await fn(cellObject, this);
+    this.setVal(cell, newValue);
+    return this.cell(cell);
   }
 
   private static async getColum(colNumber: number): Promise<string> {
@@ -74,7 +134,7 @@ export class EasyCSV2JSON {
     return result;
   }
 
-  static async inferType(value: string): Promise<MetadataType> {
+  static async inferType(value: string): Promise<Cell> {
     const doit = (fn: () => any) => {
       try {
         return fn();
@@ -99,6 +159,6 @@ export class EasyCSV2JSON {
     if (!typeName) {
       typeName = typeof result;
     }
-    return { value: result, type: typeName };
+    return { value: result, type: typeName, column: '', row: 0 } as Cell;
   }
 }
