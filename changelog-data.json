@@ -1,16 +1,166 @@
 [
   {
-    "isoDate": "2020-11-30",
-    "niceDate": "30 November 2020",
-    "diff": "v1.0.2..",
-    "href": "https://github.com/ariassd/easy-csv-npm/compare/v1.0.2...v1.0.2",
+    "isoDate": "2020-12-05",
+    "niceDate": "5 December 2020",
+    "diff": "v1.1.0..",
+    "href": "https://github.com/ariassd/easy-csv-npm/compare/v1.1.0...v1.1.0",
     "major": false,
     "tag": null,
-    "title": "v1.0.2",
-    "date": "2020-11-30T19:51:13.716Z",
+    "title": "v1.1.0",
+    "date": "2020-12-05T03:09:25.035Z",
     "summary": null,
     "commits": [],
     "merges": [],
+    "fixes": []
+  },
+  {
+    "isoDate": "2020-12-04",
+    "niceDate": "4 December 2020",
+    "diff": "v1.0.3..v1.1.0",
+    "href": "https://github.com/ariassd/easy-csv-npm/compare/v1.0.3...v1.1.0",
+    "major": false,
+    "tag": "v1.1.0",
+    "date": "2020-12-04",
+    "title": "v1.1.0",
+    "version": "v1.1.0",
+    "summary": null,
+    "commits": [
+      {
+        "hash": "e81a026dbcf9483672561c663ff014864b55e27a",
+        "shorthash": "e81a026",
+        "author": "Luis Arias",
+        "email": "ariassd@gmail.com",
+        "date": "2020-12-05T02:34:09.000Z",
+        "subject": "feature: General features, new methods and support to functions",
+        "message": "feature: General features, new methods and support to functions",
+        "fixes": null,
+        "href": "https://github.com/ariassd/easy-csv-npm/commit/e81a026dbcf9483672561c663ff014864b55e27a",
+        "breaking": false,
+        "files": 11,
+        "insertions": 491,
+        "deletions": 53,
+        "merge": null
+      },
+      {
+        "hash": "20d2700425644c489360fdb7107b2d101d9ccc24",
+        "shorthash": "20d2700",
+        "author": "Luis Arias",
+        "email": "ariassd@gmail.com",
+        "date": "2020-12-05T02:48:30.000Z",
+        "subject": "changelog fixes",
+        "message": "changelog fixes",
+        "fixes": null,
+        "href": "https://github.com/ariassd/easy-csv-npm/commit/20d2700425644c489360fdb7107b2d101d9ccc24",
+        "breaking": false,
+        "files": 2,
+        "insertions": 9,
+        "deletions": 16,
+        "merge": null
+      }
+    ],
+    "merges": [
+      {
+        "id": "2",
+        "message": "General features, new methods and support to functions",
+        "href": "https://github.com/ariassd/easy-csv-npm/pull/2",
+        "author": "Luis Arias",
+        "commit": {
+          "hash": "9aa602e6a2642af1a7245cc86250175addd4ddc6",
+          "shorthash": "9aa602e",
+          "author": "Luis Arias",
+          "email": "ariassd@gmail.com",
+          "date": "2020-12-05T02:39:52.000Z",
+          "subject": "Merge pull request #2 from ariassd/formulas",
+          "message": "Merge pull request #2 from ariassd/formulas\n\nGeneral features, new methods and support to functions",
+          "fixes": null,
+          "href": "https://github.com/ariassd/easy-csv-npm/commit/9aa602e6a2642af1a7245cc86250175addd4ddc6",
+          "breaking": false
+        }
+      }
+    ],
+    "fixes": []
+  },
+  {
+    "isoDate": "2020-11-30",
+    "niceDate": "30 November 2020",
+    "diff": "v1.0.2..v1.0.3",
+    "href": "https://github.com/ariassd/easy-csv-npm/compare/v1.0.2...v1.0.3",
+    "major": false,
+    "tag": "v1.0.3",
+    "date": "2020-11-30",
+    "title": "v1.0.3",
+    "version": "v1.0.3",
+    "summary": null,
+    "commits": [
+      {
+        "hash": "3d0a8be2551af90d70a814c3628928d9b0c51e02",
+        "shorthash": "3d0a8be",
+        "author": "Luis Arias",
+        "email": "ariassd@gmail.com",
+        "date": "2020-11-30T23:08:47.000Z",
+        "subject": "fix: Column generation improvements, and new metadata field (row number)",
+        "message": "fix: Column generation improvements, and new metadata field (row number)",
+        "fixes": null,
+        "href": "https://github.com/ariassd/easy-csv-npm/commit/3d0a8be2551af90d70a814c3628928d9b0c51e02",
+        "breaking": false,
+        "files": 8,
+        "insertions": 282,
+        "deletions": 27,
+        "merge": null
+      },
+      {
+        "hash": "8aa9102fc109793f860629ff60acccbdfae8d83d",
+        "shorthash": "8aa9102",
+        "author": "Luis Arias",
+        "email": "ariassd@gmail.com",
+        "date": "2020-12-01T02:40:10.000Z",
+        "subject": "readme and documentation",
+        "message": "readme and documentation",
+        "fixes": null,
+        "href": "https://github.com/ariassd/easy-csv-npm/commit/8aa9102fc109793f860629ff60acccbdfae8d83d",
+        "breaking": false,
+        "files": 3,
+        "insertions": 114,
+        "deletions": 73,
+        "merge": null
+      },
+      {
+        "hash": "578622006009b58c8ebb24531a38a5019eef8b5d",
+        "shorthash": "5786220",
+        "author": "Luis Arias",
+        "email": "ariassd@gmail.com",
+        "date": "2020-12-01T02:14:48.000Z",
+        "subject": "changelog",
+        "message": "changelog",
+        "fixes": null,
+        "href": "https://github.com/ariassd/easy-csv-npm/commit/578622006009b58c8ebb24531a38a5019eef8b5d",
+        "breaking": false,
+        "files": 1,
+        "insertions": 5,
+        "deletions": 0,
+        "merge": null
+      }
+    ],
+    "merges": [
+      {
+        "id": "1",
+        "message": "Metadata column row",
+        "href": "https://github.com/ariassd/easy-csv-npm/pull/1",
+        "author": "Luis Arias",
+        "commit": {
+          "hash": "325c857797f663aac245a42a55d22d55d12abae8",
+          "shorthash": "325c857",
+          "author": "Luis Arias",
+          "email": "ariassd@gmail.com",
+          "date": "2020-12-01T02:41:47.000Z",
+          "subject": "Merge pull request #1 from ariassd/metadata-column-row",
+          "message": "Merge pull request #1 from ariassd/metadata-column-row\n\nMetadata column row",
+          "fixes": null,
+          "href": "https://github.com/ariassd/easy-csv-npm/commit/325c857797f663aac245a42a55d22d55d12abae8",
+          "breaking": false
+        }
+      }
+    ],
     "fixes": []
   },
   {
