@@ -123,6 +123,27 @@ export class EasyCSV2JSON {
     return this.cell(cell);
   }
 
+  public async filterFn(
+    column: string,
+    fn: (value: any) => boolean,
+  ): Promise<EasyCSV2JSON> {
+    let result = new EasyCSV2JSON();
+    result.$options = this.$options;
+    await result.emptyTable();
+
+    for (const line of this.$table) {
+      const coincidence = line.find((i) => i.column === column && fn(i.value));
+      if (coincidence) {
+        result.$table.push(line);
+      }
+    }
+    return result;
+  }
+
+  public async filterVal(column: string, value: any): Promise<EasyCSV2JSON> {
+    return this.filterFn(column, (val) => val == value);
+  }
+
   private static async getColum(colNumber: number): Promise<string> {
     const columns = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     let spin = 0;
@@ -132,6 +153,11 @@ export class EasyCSV2JSON {
       spin > 0 ? await EasyCSV2JSON.getColum(spin - 1) : ''
     }`;
     return result;
+  }
+
+  private async emptyTable() {
+    this.$table = [[]];
+    while (this.$table.length >= 1) this.$table.pop();
   }
 
   static async inferType(value: string): Promise<Cell> {

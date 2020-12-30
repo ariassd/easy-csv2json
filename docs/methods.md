@@ -1,3 +1,5 @@
+[🔙 Back to readme](../readme.md)
+
 ## Methods
 
 Specification of methods available in the class
@@ -200,7 +202,7 @@ Apply a function to the value of the cell and allow to do calculations and modif
 fn: (value: any, $this: EasyCSV2JSON) => Promise<any>
 ```
 
-The second parameter is a function that receives as a parameters `value` the value of the cell and `$this` a reference to the complete csv json document and functions
+> The second parameter is a function that receives as a parameters `value` the value of the cell and `$this` a reference to the complete csv json document and functions
 
 **Return** `Cell` Object cell containing all metadata
 
@@ -234,6 +236,84 @@ _Result_
   [6, "RED ONION 1000g", 3.01, 1, "red onion"],
   [7, "GINGER 1000g", 3.81, 1, "ginger"],
   [8, "CUCUMBER 1000 g", 0.49, 1, "cucumber"]
+]
+```
+
+### .filterVal()
+
+> Static: false
+> Is async: true
+
+**Description**
+Filter all rows the containing the exact the value in the column sent by parameter
+
+**Params**
+` column: string` Column to filter. Eg: `B`
+` value: any` Exact value to find on each cell Eg:`YAM 1000g`
+
+**Return** `EasyCSV2JSON` New object containing only rows with coincidences
+
+**Example**
+
+```typescript
+const ecsv = new EasyCSV2JSON();
+await ecsv.init({
+  file: ab,
+  charSep: ',',
+  headers: false,
+  metadata: false,
+} as EasyCSV2JSONInput);
+
+await ecsv.filterVal('B', 'YAM 1000g');
+```
+
+_Result_
+
+```json
+[[0, "YAM 1000g", 1.22, 1]]
+```
+
+### .filterFn()
+
+> Static: false
+> Is async: true
+
+**Description**
+Filter rows using a user defined function to make match values
+
+**Params**
+` column: string` Column to apply formula. Eg: `B`
+
+```typescript
+fn: (value: any) => boolean;
+```
+
+> The second parameter is a function that receives as a parameters the value of the cell and returns a boolean indicating if there is a match
+
+**Return** `EasyCSV2JSON` Object containing all rows that makes match
+
+**Example**
+
+```typescript
+const ecsv = new EasyCSV2JSON();
+await ecsv.init({
+  file: ab,
+  charSep: ',',
+  headers: false,
+  metadata: false,
+} as EasyCSV2JSONInput);
+
+const filteredData: EasyCSV2JSON = await eCsv.filterFn('B', (value) =>
+  new RegExp(/onion/i).test(value),
+);
+```
+
+_Result_
+
+```json
+[
+  [5, "WHITE ONION 1000g", 1.16, 1],
+  [6, "RED ONION 1000g", 3.01, 1]
 ]
 ```
 
