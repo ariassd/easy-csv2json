@@ -2,7 +2,7 @@
 
 # Easy CSV2JSON
 
-### Do you need process CSV files like a PRO!
+### Do you need to process CSV files like a PRO!?
 
 This NPM provides the best way to convert from simple CSV file to JSON and giving you some valuable and useful metadata for querying the results and functions that allows modify, filter, and sort data.
 
@@ -13,13 +13,13 @@ Currently available
 - Filter data by column `.filterVal('B', function)`
 - Sort data `.sort('B', 'ASC')`
 
-Coming soon
+Coming soon functionalities
 
 - Apply formulas to row sets
 - Save csv file
 - Transform to excel datasheet
 
-## How to install.
+## How to install?.
 
 [see package on npmjs.com](https://www.npmjs.com/package/easy-csv2json)
 
@@ -27,7 +27,7 @@ Coming soon
 npm i easy-csv2json
 ```
 
-### Simple use of static method
+### Simple use of the package
 
 **EasyCSV2JSON.convert**
 
@@ -37,17 +37,23 @@ import { EasyCSV2JSON, EasyCSV2JSONInput } from 'easy-csv2json/lib';
 // ...
 
 const fs = require('fs');
+const filePath = join(documents, 'myFile.csv');
+const ab = fs.readFileSync(filePath);
+const eCsv = new EasyCSV2JSON();
+await eCsv.init({
+  file: ab,
+  charSep: ',',
+  headers: false,
+  metadata: false,
+} as EasyCSV2JSONInput);
 
-const filePath = './my-file.csv';
-fs.readFile(filePath, null, (err: any, nb: any) => {
-  const ab = nb.buffer;
-  EasyCSV2JSON.convert({
-    file: ab,
-    charSep: ',',
-    headers: false,
-    metadata: false,
-  } as EasyCSV2JSONInput).then((data) => console.log(data));
-});
+const data = await eCsv.convert();
+const filteredData: EasyCSV2JSON = await eCsv.filterFn('B', (value) =>
+  new RegExp(/onion/i).test(value),
+);
+
+console.log(data);
+console.log(await filteredData.convert());
 ```
 
 _Result json_
