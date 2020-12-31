@@ -1,32 +1,42 @@
+# Package easy-csv2json changes
+
 {{#each releases}}
-# {{title}}
-[{{isoDate}}]
+## {{title}} [{{isoDate}}]
 
 {{! lit commits with feature: in message, use feature: or Feature: }}
 {{! href, shorthash}}
 {{#commit-list
-  commits
-  heading='### Features'
-  message='(feature: )|(Feature: )'
-  exclude='(fix: )|(Fix: )|(break: )|(Break: )'}}
+commits
+heading='### Features'
+message='(feature: )|(Feature: )'
+exclude='(fix: )|(Fix: )|(break: )|(Break: )|(update: )|(Update: )'}}
 * {{subject}}
 {{/commit-list}}
 
 {{! use fix: or Fix: }}
 {{#commit-list
-  commits
-  heading='### Fixes'
-  message='(fix: )|(Fix: )'
-  exclude='(break: )|(Break: )|(Feature: )|(feature: )'}}
+commits
+heading='### Fixes'
+message='(fix: )|(Fix: )'
+exclude='(break: )|(Break: )|(Feature: )|(feature: )|(update: )|(Update: )'}}
 * {{subject}}`
 {{/commit-list}}
 
 {{! user break: or Break: }}
 {{#commit-list
-  commits
-  heading='### Breaking changes'
-  message='(break: )|(Break: )'
-  exclude='(fix: )|(Fix: )|(Feature: )|(feature: )'}}
+commits
+heading='### Breaking changes'
+message='(break: )|(Break: )'
+exclude='(fix: )|(Fix: )|(Feature: )|(feature: )|(update: )|(Update: )'}}
+* {{subject}}
+{{/commit-list}}
+
+{{! user break: or Break: }}
+{{#commit-list
+commits
+heading='### Updates'
+message='(update: )|(Update: )'
+exclude='(break: )|(Break: )|(fix: )|(Fix: )|(Feature: )|(feature: )'}}
 * {{subject}}
 {{/commit-list}}
 
