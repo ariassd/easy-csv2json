@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy-assets",
     "clean": "rm -rf lib",
     "format": "prettier --write \"src/**/*.ts\"",
     "prepare": "npm run build",
@@ -13,7 +13,8 @@
     "postversion": "git push && git push --tags",
     "changelog": "auto-changelog --template changelog-template.hbs -p -u --commit-limit false",
     "changelog-debug": "auto-changelog --template changelog-template.hbs -p --template json --output changelog-data.json",
-    "postinstall": ""
+    "postinstall": "node ./lib/scripts/postinstall.js",
+    "copy-assets": "node scripts/copy-assets.js"
   },
   "repository": {
     "type": "git",
