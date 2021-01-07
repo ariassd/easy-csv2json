@@ -2,19 +2,32 @@
 
 # Easy CSV2JSON
 
-Easy convert from CSV file to JSON
+### Do you need to process CSV files like a PRO!?
 
-This NPM provides a way to convert from simple CSV file to JSON and give you some valuable and useful metadata for querying the results.
+This NPM provides the best way to convert from simple CSV file to JSON and giving you some valuable and useful metadata for querying the results and functions that allows modify, filter, and sort data.
 
-## How to install.
+Currently available
 
-[see npmjs package](https://www.npmjs.com/package/easy-csv2json)
+- Modify data using custom functions colum-row pair `.setVal('b4', 'hello');`
+- Formulas `.applyFormula('B3', function)`
+- Filter data by column `.filterVal('B', function)`
+- Sort data `.sort('B', 'ASC')`
+
+Coming soon functionalities
+
+- Apply formulas to row sets
+- Save csv file
+- Transform to excel datasheet
+
+## How to install?.
+
+[see package on npmjs.com](https://www.npmjs.com/package/easy-csv2json)
 
 ```bash
 npm i easy-csv2json
 ```
 
-### Simple use of static method
+### Simple use of the package
 
 **EasyCSV2JSON.convert**
 
@@ -24,17 +37,23 @@ import { EasyCSV2JSON, EasyCSV2JSONInput } from 'easy-csv2json/lib';
 // ...
 
 const fs = require('fs');
+const filePath = join(documents, 'myFile.csv');
+const ab = fs.readFileSync(filePath);
+const eCsv = new EasyCSV2JSON();
+await eCsv.init({
+  file: ab,
+  charSep: ',',
+  headers: false,
+  metadata: false,
+} as EasyCSV2JSONInput);
 
-const filePath = './my-file.csv';
-fs.readFile(filePath, null, (err: any, nb: any) => {
-  const ab = nb.buffer;
-  EasyCSV2JSON.convert({
-    file: ab,
-    charSep: ',',
-    headers: false,
-    metadata: false,
-  } as EasyCSV2JSONInput).then((data) => console.log(data));
-});
+const data = await eCsv.convert();
+const filteredData: EasyCSV2JSON = await eCsv.filterFn('B', (value) =>
+  new RegExp(/onion/i).test(value),
+);
+
+console.log(data);
+console.log(await filteredData.convert());
 ```
 
 _Result json_
@@ -55,7 +74,7 @@ _Result json_
 
 ### More output samples here
 
-[📤 Go to samples](./docs/samples.md)
+### [📤 See more to samples here](./docs/samples.md)
 
 ### Parameter options
 
@@ -82,14 +101,22 @@ _Result json_
 
 ## Methods
 
+### [See methods documentation here](docs/methods.md)
+
 EasyCSV2JSON used as a instanced class provide the following methods.
 
 ```typescript
 const eCsv = new EasyCSV2JSON();
 await eCsv.init(options):
+await eCsv.getTable();
+await eCsv.convert();
+await eCsv.val('B8');
+await eCsv.setVal('b4', 'hello');
+await eCsv.cell('a1');
+await eCsv.applyFormula('B3', fn: (value: any, $this: EasyCSV2JSON) => Promise<any>)
+await eCsv.filterVal('B', 'BROCOLI 1000 g', <options>)
+await eCsv.filterFn('B', value => new RegExp(/A/i).test(value), <options>),
 ```
-
-[See methods here](docs/methods.md)
 
 ## Status
 
@@ -98,7 +125,7 @@ Thank you for using this NPM
 
 ## Stay in touch
 
-- Author - Luis Arias 2020 <ariassd@gmail.com>
+- Author - Luis Arias 2020 <<ariassd@gmail.com>>
   [GitHub profile](https://github.com/ariassd)
 
 ## License

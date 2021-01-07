@@ -1,3 +1,4 @@
+
 # v1.1.1
 [2020-12-05]
 
@@ -11,14 +12,17 @@
 # v1.1.0
 [2020-12-04]
 
-### Features
+## v1.1.1 [2020-12-04]
 
 * feature: General features, new methods and support to functions
 
 # v1.0.3
 [2020-11-30]
 
-### Fixes
+### Features
+
+* feature: General features, new methods and support to functions
+
 
 * fix: Column generation improvements, and new metadata field (row number)`
 
@@ -27,3 +31,4 @@
 
 # v1.0.1
 [2020-11-25]
+

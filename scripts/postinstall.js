@@ -1,3 +1,5 @@
+// post install script
+
 const colors = {
   Reset: "\x1b[0m",
   FgMagenta: "\x1b[35m",

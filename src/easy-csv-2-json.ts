@@ -1,7 +1,7 @@
 import { OutOfRangeException } from '.';
 import { Cell } from './cell';
 import { EasyCSV2JSONInput } from './easy-csv-2-json-input';
-import { Row } from './row';
+
 export class EasyCSV2JSON {
   private $table: [Array<Cell>] = [[]];
   private $options: EasyCSV2JSONInput;
@@ -123,6 +123,39 @@ export class EasyCSV2JSON {
     return this.cell(cell);
   }
 
+  public async filterFn(
+    column: string,
+    fn: (value: any) => boolean,
+    options: { newRowNumbers: boolean } = { newRowNumbers: true },
+  ): Promise<EasyCSV2JSON> {
+    let result = new EasyCSV2JSON();
+    result.$options = this.$options;
+    await result.emptyTable();
+
+    let rowNumber = 1;
+    for (const line of this.$table) {
+      const coincidence = line.find((i) => i.column === column && fn(i.value));
+      if (coincidence) {
+        if (options.newRowNumbers) {
+          for (const cell of line) {
+            cell.row = rowNumber;
+          }
+        }
+        result.$table.push(line);
+        rowNumber++;
+      }
+    }
+    return result;
+  }
+
+  public async filterVal(
+    column: string,
+    value: any,
+    options: { newRowNumbers: boolean } = { newRowNumbers: true },
+  ): Promise<EasyCSV2JSON> {
+    return this.filterFn(column, (val) => val == value, options);
+  }
+
   private static async getColum(colNumber: number): Promise<string> {
     const columns = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     let spin = 0;
@@ -132,6 +165,11 @@ export class EasyCSV2JSON {
       spin > 0 ? await EasyCSV2JSON.getColum(spin - 1) : ''
     }`;
     return result;
+  }
+
+  private async emptyTable() {
+    this.$table = [[]];
+    while (this.$table.length >= 1) this.$table.pop();
   }
 
   static async inferType(value: string): Promise<Cell> {
