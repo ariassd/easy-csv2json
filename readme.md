@@ -114,8 +114,8 @@ await eCsv.val('B8');
 await eCsv.setVal('b4', 'hello');
 await eCsv.cell('a1');
 await eCsv.applyFormula('B3', fn: (value: any, $this: EasyCSV2JSON) => Promise<any>)
-await eCsv.filterVal('B', 'BROCOLI 1000 g')
-await eCsv.filterFn('B', value => new RegExp(/A/i).test(value)),
+await eCsv.filterVal('B', 'BROCOLI 1000 g', <options>)
+await eCsv.filterFn('B', value => new RegExp(/A/i).test(value), <options>),
 ```
 
 ## Status
@@ -127,9 +127,6 @@ Thank you for using this NPM
 
 - Author - Luis Arias 2020 <<ariassd@gmail.com>>
   [GitHub profile](https://github.com/ariassd)
-
-- Contributors
-  - Fabricio Vargas - [Github](https://github.com/jfab91)
 
 ## License
 

@@ -31,7 +31,7 @@
   "devDependencies": {
     "auto-changelog": "^2.2.1",
     "njscommon": "npm:@nestjs/common@^7.3.2",
-    "prettier": "^2.2.0",
+    "prettier": "^2.2.1",
     "rxjs": "^6.6.3",
     "typescript": "^3.9.7"
   },
