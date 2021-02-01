@@ -11,10 +11,10 @@ Currently available
 - Modify data using custom functions colum-row pair `.setVal('b4', 'hello');`
 - Formulas `.applyFormula('B3', function)`
 - Filter data by column `.filterVal('B', function)`
-- Sort data `.sort('B', 'ASC')`
 
 Coming soon functionalities
 
+- Sort data `.sort('B', 'ASC')`
 - Apply formulas to row sets
 - Save csv file
 - Transform to excel datasheet
