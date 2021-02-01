@@ -36,7 +36,13 @@ export class EasyCSV2JSON {
     const csvContent = enc.decode(arr);
 
     if (csvContent) {
-      const lines = csvContent.split(`\n`);
+      let lines = csvContent.split('\r\n');
+      if (lines.length === 1) {
+        lines = csvContent.split('\n');
+      }
+      if (lines.length === 1) {
+        lines = csvContent.split('\r');
+      }
       let headers: string[] = [];
       let rowNumber: number = 0;
       for (const row in lines) {
