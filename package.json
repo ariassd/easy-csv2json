@@ -1,6 +1,6 @@
 {
   "name": "easy-csv2json",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Easiest way to convert CSV files to JSON",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -29,11 +29,8 @@
   "license": "MIT",
   "homepage": "https://github.com/ariassd/easy-csv2json",
   "devDependencies": {
-    "auto-changelog": "^2.2.1",
-    "njscommon": "npm:@nestjs/common@^7.3.2",
-    "prettier": "^2.2.1",
-    "rxjs": "^6.6.3",
-    "typescript": "^3.9.7"
+    "prettier": "^2.5.0",
+    "typescript": "^4.5.2"
   },
   "dependencies": {},
   "files": [

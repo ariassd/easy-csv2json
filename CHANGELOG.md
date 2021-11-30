@@ -1,5 +1,11 @@
 # Package easy-csv2json changes
 
+## v1.2.1 [2021-02-01]
+
+Fixes
+fix: remove unnecessary libraries
+change: update typescript
+
 ## v1.2.0 [2021-01-06]
 
 ### Fixes
